@@ -276,6 +276,10 @@ func jsonTagToCamelCase(tagName string) string {
 	tagName = tagSplit[0]
 	if len(tagSplit) > 1 {
 		for i := 1; i < len(tagSplit); i++ {
+			if strings.ToLower(tagSplit[i]) == "id" {
+				tagName += strings.ToUpper(tagSplit[i])
+				continue
+			}
 			tagName += strings.Title(tagSplit[i])
 		}
 	}

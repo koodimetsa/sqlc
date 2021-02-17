@@ -1,5 +1,9 @@
 .PHONY: build test test-examples regen start psql mysqlsh
 
+
+build-for-own:
+	go build -o sqlc-custom cmd/sqlc/main.go
+
 build:
 	go build ./...
 
