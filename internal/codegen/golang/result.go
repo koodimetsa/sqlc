@@ -259,7 +259,7 @@ func columnsToStruct(r *compiler.Result, name string, columns []goColumn, settin
 			tags["db:"] = tagName
 		}
 		if settings.Go.EmitJSONTags {
-			tags["json:"] = tagName
+			tags["json:"] = jsonTagToCamelCase(tagName)
 		}
 		gs.Fields = append(gs.Fields, Field{
 			Name: fieldName,
@@ -269,4 +269,16 @@ func columnsToStruct(r *compiler.Result, name string, columns []goColumn, settin
 		seen[colName]++
 	}
 	return &gs
+}
+
+func jsonTagToCamelCase(tagName string) string {
+	tagSplit := strings.Split(tagName, "_")
+	tagName = tagSplit[0]
+	if len(tagSplit) > 1 {
+		for i := 1; i < len(tagSplit); i++ {
+			tagName += strings.Title(tagSplit[i])
+		}
+	}
+
+	return tagName
 }
