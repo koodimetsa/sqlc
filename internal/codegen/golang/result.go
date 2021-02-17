@@ -78,7 +78,7 @@ func buildStructs(r *compiler.Result, settings config.CombinedSettings) []Struct
 					tags["db:"] = column.Name
 				}
 				if settings.Go.EmitJSONTags {
-					tags["json:"] = column.Name
+					tags["json:"] = jsonTagToCamelCase(column.Name)
 				}
 				s.Fields = append(s.Fields, Field{
 					Name:    StructName(column.Name, settings),
