@@ -36,15 +36,15 @@ func mysqlType(r *compiler.Result, col *compiler.Column, settings config.Combine
 
 	case "int", "integer", "smallint", "mediumint", "year":
 		if notNull {
-			return "int32"
+			return "int"
 		}
-		return "sql.NullInt32"
+		return "sql.NullInt"
 
 	case "bigint":
 		if notNull {
-			return "int64"
+			return "int"
 		}
-		return "sql.NullInt64"
+		return "sql.NullInt"
 
 	case "blob", "binary", "varbinary", "tinyblob", "mediumblob", "longblob":
 		return "[]byte"
