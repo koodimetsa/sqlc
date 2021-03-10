@@ -29,7 +29,8 @@ func mysqlType(r *compiler.Result, col *compiler.Column, settings config.Combine
 			return "sql.NullBool"
 		} else {
 			if notNull {
-				return "int32"
+				return "bool"
+				//return "int32"
 			}
 			return "sql.NullInt32"
 		}
